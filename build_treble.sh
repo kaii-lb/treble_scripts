@@ -7,15 +7,23 @@ repo init -u https://github.com/ProjectEverest/manifest -b qpr2 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
 
-mkdir device/phh/treble/
-
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
+
+if [ -d "treblestuff" ]; then
+  echo "ERROR: syncing treble_everest failed."
+  exit 1
+fi
 
 treblestuff/patches/apply.sh . trebledroid
 treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh pre
 
 git clone https://github.com/TrebleDroid/device_phh_treble.git device/phh/treble/
+
+if [ -d "device/phh/treble" ]; then
+  echo "ERROR: syncing device_phh_treble failed."
+  exit 1
+fi
 
 cp treblestuff/everest.mk device/phh/treble/everest.mk
 
