@@ -2,7 +2,7 @@
 # absolute mish mash of stuff
 
 git rebase --abort
-#git am --abort
+git am --abort
 
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
