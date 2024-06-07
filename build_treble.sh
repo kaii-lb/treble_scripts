@@ -2,11 +2,14 @@
 # absolute mish mash of stuff
 
 rm -rf .repo/local_manifests
+rm -rf treblestuff/
+rm -rf device/phh/treble/
+rm -rf .git/rebase-apply/
 
 repo init -u https://github.com/ProjectEverest/manifest -b qpr2 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
-
+git clone https://github.com/TrebleDroid/vendor_hardware_overlay.git vendor/hardware_overlay/
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
 
 ls treblestuff/ 1>/dev/null
@@ -42,6 +45,7 @@ export TARGET_SUPPORTS_BLUR=true
 export TARGET_HAS_UDFPS=true
 export EXTRA_UDFPS_ANIMATIONS=true
 export TARGET_INCLUDE_PIXEL_LAUNCHER=false
+export TARGET_RELEASE=ap1a
 
 source build/envsetup.sh
 
