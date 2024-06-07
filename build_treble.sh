@@ -15,7 +15,10 @@ treblestuff/patches/apply.sh . trebledroid
 treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh pre
 
-cp treblestuff/everest.mk /device/phh/treble/everest.mk
+git clone https://github.com/TrebleDroid/device_phh_treble.git device/phh/treble/
+
+cp treblestuff/everest.mk device/phh/treble/everest.mk
+
 cd device/phh/treble
 bash generate.sh everest
 cd ../../../ 
