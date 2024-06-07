@@ -49,5 +49,5 @@ export TARGET_RELEASE=ap1a
 
 source build/envsetup.sh
 
-lunch treble_arm64_bgN-ap1a-userdebug 
+lunch everest_treble-user
 make systemimage -j $(nproc --all)
