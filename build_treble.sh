@@ -21,6 +21,8 @@ cp treblestuff/everest.mk device/phh/treble/everest.mk
 
 cd device/phh/treble
 bash generate.sh everest
+cp treble_arm64_bgN.mk everest_arm64_bgN-userdebug.mk
+cp treble_arm64_bgN.mk lineage_arm64_bgN.mk
 cd ../../../ 
 
 /opt/crave/resync.sh
