@@ -10,7 +10,7 @@ git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
 
 ls treblestuff/ 1>/dev/null
-if [ :? != 0 ]; then
+if [ $? != 0 ]; then
   echo "ERROR: syncing treble_everest failed."
   exit 1
 fi
@@ -22,7 +22,7 @@ treblestuff/patches/apply.sh pre
 git clone https://github.com/TrebleDroid/device_phh_treble.git device/phh/treble/
 
 ls device/phh/treble 1>/dev/null
-if [ :? != 0 ]; then
+if [ $? != 0 ]; then
   echo "ERROR: syncing device_phh_treble failed."
   exit 1
 fi
