@@ -35,5 +35,5 @@ export TARGET_INCLUDE_PIXEL_LAUNCHER=false
 
 source build/envsetup.sh
 
-lunch treble_arm64_bgN-userdebug 
+lunch treble_arm64_bgN-ap1a-userdebug 
 make systemimage -j $(nproc --all)
