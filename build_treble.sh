@@ -34,7 +34,8 @@ cp treblestuff/everest.mk device/phh/treble/everest.mk
 
 cd device/phh/treble
 bash generate.sh everest
-cp treble_arm64_bgN.mk everest_arm64_bgN-userdebug.mk
+cp treble_arm64_bgN.mk everest_arm64_bgN-user.mk
+cp treble_arm64_bgN.mk everest_arm64_bgN.mk
 cp treble_arm64_bgN.mk lineage_arm64_bgN.mk
 cd ../../../ 
 
@@ -49,5 +50,5 @@ export TARGET_RELEASE=ap1a
 
 source build/envsetup.sh
 
-lunch everest_treble-user
+lunch everest_arm64_bgN-user
 make systemimage -j $(nproc --all)
