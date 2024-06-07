@@ -5,6 +5,7 @@ rm -rf .repo/local_manifests
 rm -rf treblestuff/
 rm -rf device/phh/treble/
 rm -rf .git/rebase-apply/
+rm -rf vendor/hardware_overlay/
 
 repo init -u https://github.com/ProjectEverest/manifest -b qpr2 --git-lfs
 
@@ -50,5 +51,6 @@ export TARGET_RELEASE=ap1a
 
 source build/envsetup.sh
 
-lunch everest_arm64_bgN-user
+# screw this command sideways
+lunch everest_arm64_bgN-ap1a-user
 make systemimage -j $(nproc --all)
