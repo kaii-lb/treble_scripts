@@ -3,6 +3,7 @@
 
 git rebase --abort
 git am --abort
+git am --skip
 
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
@@ -24,7 +25,7 @@ fi
 
 treblestuff/patches/apply.sh . trebledroid
 treblestuff/patches/apply.sh . debug
-treblestuff/patches/apply.sh pre
+treblestuff/patches/apply.sh . pre
 
 git clone https://github.com/TrebleDroid/device_phh_treble.git device/phh/treble/
 
