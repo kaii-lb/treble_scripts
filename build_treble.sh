@@ -29,7 +29,17 @@ fi
 #   git rebase --abort
 # fi
 treblestuff/patches/apply.sh . debug
+if [ $? != 0 ]; then
+  echo "ERROR: failed applying debug patches."
+  git am --show-current-patch=diff
+  git rebase --abort
+fi
 treblestuff/patches/apply.sh . pre
+if [ $? != 0 ]; then
+  echo "ERROR: failed applying debug patches."
+  git am --show-current-patch=diff
+  git rebase --abort
+fi
 
 git clone https://github.com/TrebleDroid/device_phh_treble.git device/phh/treble/
 
@@ -50,9 +60,7 @@ cd ../../../
 echo "LOG: done generating."
 
 # /opt/crave/resync.sh
-date
 curl -sf https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash;
-date
 
 echo "LOG: resync done."
 
