@@ -47,9 +47,12 @@ cp treble_arm64_bgN.mk everest_arm64_bgN-user.mk
 cp treble_arm64_bgN.mk everest_arm64_bgN.mk
 cp treble_arm64_bgN.mk lineage_arm64_bgN.mk
 cd ../../../ 
+echo "LOG: done generating."
 
 # /opt/crave/resync.sh
-curl https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash
+date
+curl -sf https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash;
+date
 
 export EVEREST_MAINTAINER="kaii"
 export TARGET_SUPPORTS_BLUR=true
