@@ -23,11 +23,11 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
-treblestuff/patches/apply.sh . trebledroid
-if [ $? != 0 ]; then
-  echo "ERROR: failed applying trebledroid patches."
-  git rebase --abort
-fi
+# treblestuff/patches/apply.sh . trebledroid
+# if [ $? != 0 ]; then
+#   echo "ERROR: failed applying trebledroid patches."
+#   git rebase --abort
+# fi
 treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pre
 
@@ -48,7 +48,8 @@ cp treble_arm64_bgN.mk everest_arm64_bgN.mk
 cp treble_arm64_bgN.mk lineage_arm64_bgN.mk
 cd ../../../ 
 
-/opt/crave/resync.sh
+# /opt/crave/resync.sh
+curl https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash
 
 export EVEREST_MAINTAINER="kaii"
 export TARGET_SUPPORTS_BLUR=true
