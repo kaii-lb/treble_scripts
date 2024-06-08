@@ -52,10 +52,8 @@ fi
 cp treblestuff/everest.mk device/phh/treble/everest.mk
 
 cd device/phh/treble
+git clean -fdx
 bash generate.sh everest
-cp treble_arm64_bgN.mk everest_arm64_bgN-user.mk
-cp treble_arm64_bgN.mk everest_arm64_bgN.mk
-cp treble_arm64_bgN.mk lineage_arm64_bgN.mk
 cd ../../../ 
 echo "LOG: done generating."
 
@@ -74,5 +72,5 @@ export TARGET_RELEASE=ap1a
 source build/envsetup.sh
 
 # screw this command sideways
-lunch everest_arm64_bgN-ap1a-user
+lunch treble_arm64_bgN-ap1a-user
 make systemimage -j $(nproc --all)
