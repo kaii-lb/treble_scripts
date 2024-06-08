@@ -23,6 +23,19 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
+cp treblestuff/everest.mk device/phh/treble/everest.mk
+
+cd device/phh/treble
+git clean -fdx
+bash generate.sh everest
+cd ../../../ 
+echo "LOG: done generating."
+
+# /opt/crave/resync.sh
+curl -sf https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash;
+
+echo "LOG: resync done."
+
 # treblestuff/patches/apply.sh . trebledroid
 # if [ $? != 0 ]; then
 #   echo "ERROR: failed applying trebledroid patches."
@@ -48,19 +61,6 @@ if [ $? != 0 ]; then
   echo "ERROR: syncing device_phh_treble failed."
   exit 1
 fi
-
-cp treblestuff/everest.mk device/phh/treble/everest.mk
-
-cd device/phh/treble
-git clean -fdx
-bash generate.sh everest
-cd ../../../ 
-echo "LOG: done generating."
-
-# /opt/crave/resync.sh
-curl -sf https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash;
-
-echo "LOG: resync done."
 
 export EVEREST_MAINTAINER="kaii"
 export TARGET_SUPPORTS_BLUR=true
