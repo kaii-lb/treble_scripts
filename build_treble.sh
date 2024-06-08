@@ -1,9 +1,9 @@
 #!/bin/sh
 # absolute mish mash of stuff
 
-git rebase --abort
-git am --abort
-git am --skip
+# git rebase --abort
+# git am --abort
+# git am --skip
 
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
@@ -24,6 +24,10 @@ if [ $? != 0 ]; then
 fi
 
 treblestuff/patches/apply.sh . trebledroid
+if [ $? != 0 ]; then
+  echo "ERROR: failed applying trebledroid patches."
+  git rebase --abort
+fi
 treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pre
 
