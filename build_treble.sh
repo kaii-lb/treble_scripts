@@ -32,7 +32,9 @@ cd ../../../
 echo "LOG: done generating."
 
 # /opt/crave/resync.sh
+date
 curl -sf https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash;
+date
 
 echo "LOG: resync done."
 
