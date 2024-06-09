@@ -7,49 +7,23 @@
 
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
-# rm -rf device/phh/treble/
-# rm -rf .git/rebase-apply/
-# rm -rf vendor/hardware_overlay/
 
 repo init -u https://github.com/ProjectEverest/manifest -b qpr2 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
-# git clone https://github.com/TrebleDroid/vendor_hardware_overlay.git vendor/hardware_overlay/
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
 
 
-# git clone https://github.com/TrebleDroid/device_phh_treble.git device/phh/treble/
-
-# ls device/phh/treble 1>/dev/null
-# if [ $? != 0 ]; then
-#   echo "ERROR: syncing device_phh_treble failed."
-#   exit 1
-# fi
-
 # /opt/crave/resync.sh
 date
-curl -sf https://raw.githubusercontent.com/sounddrill31/docker-images/patch-19/aosp/common/resync.sh | bash;
+curl -sf https://raw.githubusercontent.com/xc112lg/scripts/cd10/b.sh | bash;
 date
 
 echo "LOG: resync done."
 
 # treblestuff/patches/apply.sh . trebledroid
-# if [ $? != 0 ]; then
-#   echo "ERROR: failed applying trebledroid patches."
-#   git rebase --abort
-# fi
 treblestuff/patches/apply.sh . debug
-if [ $? != 0 ]; then
-  echo "ERROR: failed applying debug patches."
-  git am --show-current-patch=diff
-  git rebase --abort
-fi
 treblestuff/patches/apply.sh . pre
-if [ $? != 0 ]; then
-  echo "ERROR: failed applying debug patches."
-  git am --show-current-patch=diff
-  git rebase --abort
-fi
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
@@ -57,10 +31,10 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
-cp treblestuff/everest.mk device/phh/treble/everest.mk
 
 cd device/phh/treble
 git clean -fdx
+cp ../../../treblestuff/everest.mk .
 bash generate.sh everest
 cd ../../../ 
 echo "LOG: done generating."
