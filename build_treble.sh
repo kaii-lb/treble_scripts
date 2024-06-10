@@ -38,6 +38,8 @@ export EXTRA_UDFPS_ANIMATIONS=true
 export TARGET_INCLUDE_PIXEL_LAUNCHER=false
 export TARGET_RELEASE=ap1a
 
+make clobber
+
 source build/envsetup.sh
 
 cd device/phh/treble
