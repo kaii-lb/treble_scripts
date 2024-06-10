@@ -31,14 +31,6 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
-
-cd device/phh/treble
-git clean -fdx
-cp ../../../treblestuff/everest.mk .
-bash generate.sh everest
-cd ../../../ 
-echo "LOG: done generating."
-
 export EVEREST_MAINTAINER="kaii"
 export TARGET_SUPPORTS_BLUR=true
 export TARGET_HAS_UDFPS=true
@@ -47,6 +39,13 @@ export TARGET_INCLUDE_PIXEL_LAUNCHER=false
 export TARGET_RELEASE=ap1a
 
 source build/envsetup.sh
+
+cd device/phh/treble
+git clean -fdx
+cp ../../../treblestuff/everest.mk .
+bash generate.sh everest
+cd ../../../ 
+echo "LOG: done generating."
 
 # screw this command sideways
 lunch treble_arm64_bgN-userdebug
