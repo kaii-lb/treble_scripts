@@ -21,9 +21,10 @@ date
 
 echo "LOG: resync done."
 
+## re-enable last two please
 # treblestuff/patches/apply.sh . trebledroid
-treblestuff/patches/apply.sh . debug
-treblestuff/patches/apply.sh . pre
+# treblestuff/patches/apply.sh . debug
+# treblestuff/patches/apply.sh . pre
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
@@ -37,8 +38,6 @@ export TARGET_HAS_UDFPS=true
 export EXTRA_UDFPS_ANIMATIONS=true
 export TARGET_INCLUDE_PIXEL_LAUNCHER=false
 export TARGET_RELEASE=ap1a
-
-make clobber
 
 source build/envsetup.sh
 
