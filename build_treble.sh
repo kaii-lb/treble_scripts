@@ -15,16 +15,16 @@ git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
 
 
 # /opt/crave/resync.sh
-date
+echo -e "LOG: starting resync at $(date)."
 curl -sf https://raw.githubusercontent.com/xc112lg/scripts/cd10/b.sh | bash;
-date
+echo -e "LOG: resync done at $(date)."
 
-echo "LOG: resync done."
+treblestuff/patches/apply.sh . trebledroid
+treblestuff/patches/apply.sh . debug
+treblestuff/patches/apply.sh . pre
 
-## re-enable last two please
-# treblestuff/patches/apply.sh . trebledroid
-# treblestuff/patches/apply.sh . debug
-# treblestuff/patches/apply.sh . pre
+# remove conflicted charger between phh_device and everest os, should find a better way
+rm -rf device/phh/treble/charger/
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
