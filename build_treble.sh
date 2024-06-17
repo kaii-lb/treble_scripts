@@ -8,7 +8,7 @@
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
 
-repo init -u https://github.com/ProjectEverest/manifest -b qpr2 --git-lfs
+repo init -u https://github.com/ProjectEverest-staging/manifest -b qpr3 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
