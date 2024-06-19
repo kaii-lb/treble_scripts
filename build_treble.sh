@@ -37,7 +37,7 @@ export TARGET_SUPPORTS_BLUR=true
 export TARGET_HAS_UDFPS=true
 export EXTRA_UDFPS_ANIMATIONS=true
 export TARGET_INCLUDE_PIXEL_LAUNCHER=false
-export TARGET_RELEASE=ap1a
+export TARGET_RELEASE=ap2a
 
 source build/envsetup.sh
 
