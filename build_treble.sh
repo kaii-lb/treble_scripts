@@ -45,7 +45,7 @@ cd device/phh/treble
 git clean -fdx
 cp ../../../treblestuff/everest.mk .
 bash generate.sh everest
-rename 'treble' everest *.mk
+for f in treble_*.mk; do mv -v "$f" "${f/treble/everest}"; done;
 cd ../../../ 
 echo "LOG: done generating."
 
