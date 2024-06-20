@@ -14,12 +14,12 @@ git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
 
 
-/opt/crave/resync.sh
-# echo -e "LOG: starting resync at $(date)."
+echo -e "LOG: starting resync at $(date)."
 # curl -sf https://raw.githubusercontent.com/xc112lg/scripts/cd10/b.sh | bash;
-# echo -e "LOG: resync done at $(date)."
+/opt/crave/resync.sh
+echo -e "LOG: resync done at $(date)."
 
-treblestuff/patches/apply.sh . trebledroid
+#treblestuff/patches/apply.sh . trebledroid
 treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pre
 
