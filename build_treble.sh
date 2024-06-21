@@ -45,10 +45,10 @@ cd device/phh/treble
 git clean -fdx
 cp ../../../treblestuff/everest.mk .
 bash generate.sh everest
-for f in treble_*.mk; do mv -v "$f" "${f/treble/everest}"; done;
+for f in treble_*.mk; do cp -v "$f" "${f/treble/everest}"; done;
 cd ../../../ 
 echo "LOG: done generating."
 
 # screw this command sideways
-lunch everest_arm64_bgN-userdebug
+lunch treble_arm64_bgN-userdebug
 make systemimage -j $(nproc --all)
