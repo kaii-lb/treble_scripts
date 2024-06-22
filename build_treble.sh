@@ -31,6 +31,7 @@ generateMakefiles() {
 
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
+mkdir -p .repo/local_manifests
 
 repo init -u https://github.com/ProjectEverest-staging/manifest -b qpr3 --git-lfs
 
@@ -66,5 +67,5 @@ buildTrebleApp
 echo -e "LOG: running lunch..."
 lunch treble_arm64_bgN-ap2a-userdebug
 echo -e "LOG: done eating..."
-
+make installclean -j$(nproc --all)
 make systemimage -j $(nproc --all)
