@@ -67,5 +67,4 @@ buildTrebleApp
 echo -e "LOG: running lunch..."
 lunch treble_arm64_bgN-ap2a-userdebug
 echo -e "LOG: done eating..."
-make installclean -j$(nproc --all)
 make systemimage -j $(nproc --all)
