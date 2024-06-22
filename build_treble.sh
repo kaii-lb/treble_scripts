@@ -12,7 +12,7 @@ buildTrebleApp() {
     bash build.sh release
     cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
     cd ..
-    echo
+    echo "--> Finished building treble_app $PWD"
 }
 
 generateMakefiles() {
