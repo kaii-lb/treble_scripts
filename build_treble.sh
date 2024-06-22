@@ -48,8 +48,8 @@ echo -e "LOG: starting resync at $(date)."
 /opt/crave/resync.sh
 echo -e "LOG: resync done at $(date)."
 
-treblestuff/patches/apply.sh . trebledroid
-treblestuff/patches/apply.sh . debug
+#treblestuff/patches/apply.sh . trebledroid
+#treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pickedout
 
 # remove conflicted charger between phh_device and everest os, should find a better way
@@ -58,7 +58,7 @@ rm -rf device/phh/treble/charger/
 export TARGET_RELEASE=ap2a
 
 . build/envsetup.sh
-
+echo PWD is $PWD
 generateMakefiles
 buildTrebleApp
 
@@ -67,4 +67,4 @@ echo -e "LOG: running lunch..."
 lunch treble_arm64_bgN-ap2a-userdebug
 echo -e "LOG: done eating..."
 
-make bacon -j $(nproc --all)
+make systemimage -j $(nproc --all)
