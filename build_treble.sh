@@ -60,8 +60,8 @@ export TARGET_RELEASE=ap2a
 
 . build/envsetup.sh
 echo PWD is $PWD
+buildTrebleApp 
 generateMakefiles
-buildTrebleApp
 
 # screw this command sideways
 echo -e "LOG: running lunch..."
