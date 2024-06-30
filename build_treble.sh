@@ -9,7 +9,7 @@
 buildTrebleApp() {
     echo "--> Building treble_app"
     cd treble_app
-    bash build.sh release
+#    bash build.sh release
     cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
     cd ..
     echo "--> Finished building treble_app $PWD"
