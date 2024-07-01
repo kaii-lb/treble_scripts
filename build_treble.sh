@@ -33,7 +33,7 @@ rm -rf .repo/local_manifests
 rm -rf treblestuff/
 mkdir -p .repo/local_manifests
 
-repo init -u https://github.com/ProjectEverest-staging/manifest -b qpr3 --git-lfs
+repo init -u https://github.com/ProjectEverest/manifest -b qpr3 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
@@ -65,6 +65,7 @@ generateMakefiles
 
 # screw this command sideways
 echo -e "LOG: running lunch..."
-lunch treble_arm64_bgN-ap2a-userdebug
+lunch everest_arm64_bgN-ap2a-userdebug
 echo -e "LOG: done eating..."
-make systemimage -j $(nproc --all)
+#make systemimage -j $(nproc --all)
+make bacon -j$(nproc --all)
