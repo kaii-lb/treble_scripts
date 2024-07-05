@@ -22,12 +22,17 @@ generateMakefiles() {
 	cd device/phh/treble
 	git clean -fdx
 	cp ../../../treblestuff/everest.mk .
+	cp ../../../treblestuff/everest_product_filenames.mk .
 	
 	echo "--> Generating makefiles"
 	bash generate.sh everest
 	
 	echo "--> Copying and renaming makefiles"
 	for f in treble_*.mk; do cp -v "$f" "${f/treble/everest}"; done;
+
+	sed -i '${/^[[:space:]]*$/d;}' AndroidProducts.mk
+	cat testingeverest.mk >> AndroidProducts.mk
+	
 	cd ../../../ 
 	echo "--> Done generating makefiles"
 }
@@ -68,7 +73,7 @@ generateMakefiles
 
 # screw this command sideways
 echo -e "LOG: running lunch..."
-lunch treble_arm64_bgN-ap2a-userdebug
+lunch everest_arm64_bgN-ap2a-userdebug
 echo -e "LOG: done eating..."
 #make systemimage -j $(nproc --all)
 make bacon -j$(nproc --all)
