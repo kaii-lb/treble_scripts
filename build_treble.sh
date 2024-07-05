@@ -68,7 +68,7 @@ generateMakefiles
 
 # screw this command sideways
 echo -e "LOG: running lunch..."
-lunch everest_arm64_bgN-ap2a-userdebug
+lunch treble_arm64_bgN-ap2a-userdebug
 echo -e "LOG: done eating..."
 #make systemimage -j $(nproc --all)
 make bacon -j$(nproc --all)
