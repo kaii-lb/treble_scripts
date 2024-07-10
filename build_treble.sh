@@ -59,7 +59,7 @@ echo -e "LOG: resync done at $(date)."
 
 #treblestuff/patches/apply.sh . trebledroid
 #treblestuff/patches/apply.sh . debug
-treblestuff/patches/apply.sh . pickedout
+#treblestuff/patches/apply.sh . pickedout
 
 # remove conflicted charger between phh_device and everest os, should find a better way
 rm -rf device/phh/treble/charger/
@@ -73,7 +73,7 @@ generateMakefiles
 
 # screw this command sideways
 echo -e "LOG: running lunch..."
-lunch everest_arm64_bgN-ap2a-userdebug
+lunch everest_arm64_bgN-userdebug
 echo -e "LOG: done eating..."
 #make systemimage -j $(nproc --all)
 make bacon -j$(nproc --all)
