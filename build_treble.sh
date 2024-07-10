@@ -31,7 +31,7 @@ generateMakefiles() {
 	for f in treble_*.mk; do cp -v "$f" "${f/treble/everest}"; done;
 
 	sed -i '${/^[[:space:]]*$/d;}' AndroidProducts.mk
-	cat testingeverest.mk >> AndroidProducts.mk
+	cat everest_product_filenames.mk >> AndroidProducts.mk
 	
 	cd ../../../ 
 	echo "--> Done generating makefiles"
