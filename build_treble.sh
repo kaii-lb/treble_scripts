@@ -64,7 +64,7 @@ treblestuff/patches/apply.sh . pickedout
 # remove conflicted charger between phh_device and everest os, should find a better way
 rm -rf device/phh/treble/charger/
 
-export TARGET_RELEASE=ap2a
+# export TARGET_RELEASE=ap2a
 
 . build/envsetup.sh
 echo PWD is $PWD
@@ -73,7 +73,7 @@ generateMakefiles
 
 # screw this command sideways
 echo -e "LOG: running lunch..."
-lunch everest_arm64_bgN-userdebug
+lunch everest_arm64_bgN-ap2a-userdebug
 echo -e "LOG: done eating..."
 #make systemimage -j $(nproc --all)
 make bacon -j$(nproc --all)
