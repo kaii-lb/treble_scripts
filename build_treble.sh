@@ -58,7 +58,7 @@ echo -e "LOG: starting resync at $(date)."
 echo -e "LOG: resync done at $(date)."
 
 treblestuff/patches/apply.sh . personal
-#treblestuff/patches/apply.sh . debug
+treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pickedout
 
 # remove conflicted charger between phh_device and everest os, should find a better way
