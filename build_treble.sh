@@ -16,6 +16,7 @@ buildTrebleApp() {
     cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
     cd ../
     echo "--> Finished building treble_app $PWD"
+    echo
 }
 
 generateMakefiles() {
