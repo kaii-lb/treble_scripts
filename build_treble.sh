@@ -48,14 +48,14 @@ git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
-  echo "ERROR: syncing treble_everest failed."
+  echo "--> ERROR: syncing treble_everest failed."
   exit 1
 fi
 
-echo -e "LOG: starting resync at $(date)."
+echo -e "--> starting resync at $(date)."
 # curl -sf https://raw.githubusercontent.com/xc112lg/scripts/cd10/b.sh | bash;
 /opt/crave/resync.sh
-echo -e "LOG: resync done at $(date)."
+echo -e "--> resync done at $(date)."
 
 treblestuff/patches/apply.sh . personal
 treblestuff/patches/apply.sh . debug
@@ -72,9 +72,12 @@ echo PWD is $PWD
 #buildTrebleApp
 generateMakefiles
 
+# export TARGET_RELEASE=ap2a
+
 # screw this command sideways
-echo -e "LOG: running lunch..."
-lunch everest_arm64_bgN-ap2a-userdebug
-echo -e "LOG: done eating..."
-#make systemimage -j $(nproc --all)
+# make clobber
+echo -e "--> running lunch..."
+lunch everest_arm64_bgN-userdebug
+echo -e "--> done eating."
+# make systemimage -j $(nproc --all)
 make bacon -j$(nproc --all)
