@@ -61,7 +61,7 @@ echo -e "--> resync done at $(date)."
 treblestuff/patches/apply.sh . personal
 treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pickedout
-treblestuff/patches/apply.sh . trebledroid
+# treblestuff/patches/apply.sh . trebledroid
 
 # remove conflicted charger between phh_device and everest os, should find a better way
 rm -rf device/phh/treble/charger/
