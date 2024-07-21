@@ -60,7 +60,7 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
-resetAllPatches
+#resetAllPatches
 
 echo -e "--> starting resync at $(date)."
 # curl -sf https://raw.githubusercontent.com/xc112lg/scripts/cd10/b.sh | bash;
