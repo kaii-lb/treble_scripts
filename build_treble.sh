@@ -38,6 +38,13 @@ generateMakefiles() {
 	echo "--> Done generating makefiles"
 }
 
+resetAllPatches() {
+	treblestuff/patches/apply.sh . personal --reset
+	treblestuff/patches/apply.sh . debug --reset
+	treblestuff/patches/apply.sh . pickedout --reset
+	treblestuff/patches/apply.sh . trebledroid --reset
+}
+
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
 mkdir -p .repo/local_manifests
@@ -52,6 +59,8 @@ if [ $? != 0 ]; then
   echo "--> ERROR: syncing treble_everest failed."
   exit 1
 fi
+
+resetAllPatches
 
 echo -e "--> starting resync at $(date)."
 # curl -sf https://raw.githubusercontent.com/xc112lg/scripts/cd10/b.sh | bash;
