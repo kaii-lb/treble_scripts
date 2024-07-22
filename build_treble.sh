@@ -11,7 +11,11 @@ buildTrebleApp() {
     cd treble_app
 
 	# causes issues
-    bash build.sh release
+    if bash build.sh release; then
+    	echo "--> SUCCESSFULLY BUILT TREBLE APP"
+    else 
+    	echo "--> BUILDING TREBLE APP FAILED"
+    fi
     
     cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
     cd ../
@@ -70,7 +74,7 @@ echo -e "--> resync done at $(date)."
 treblestuff/patches/apply.sh . personal
 treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pickedout
-# treblestuff/patches/apply.sh . trebledroid
+treblestuff/patches/apply.sh . trebledroid
 
 # remove conflicted charger between phh_device and everest os, should find a better way
 rm -rf device/phh/treble/charger/
@@ -79,7 +83,7 @@ rm -rf device/phh/treble/charger/
 
 . build/envsetup.sh
 echo PWD is $PWD
-#buildTrebleApp
+buildTrebleApp
 generateMakefiles
 
 # export TARGET_RELEASE=ap2a
@@ -90,4 +94,4 @@ echo -e "--> running lunch..."
 lunch everest_arm64_bgN-userdebug
 echo -e "--> done eating."
 # make systemimage -j $(nproc --all)
-make bacon -j$(nproc --all)
+make systemimage -j$(nproc --all)
