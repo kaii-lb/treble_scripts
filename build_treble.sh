@@ -10,12 +10,12 @@ buildTrebleApp() {
     echo "--> Building treble_app"
     cd treble_app
 
-	# causes issues
-    if bash build.sh release; then
-    	echo "--> SUCCESSFULLY BUILT TREBLE APP"
-    else 
-    	echo "--> BUILDING TREBLE APP FAILED"
-    fi
+	# causes issues, exits entire script on success/failure
+    # if bash build.sh release; then
+    # 	echo "--> SUCCESSFULLY BUILT TREBLE APP"
+    # else 
+    # 	echo "--> BUILDING TREBLE APP FAILED"
+    # fi
     
     cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
     cd ../
@@ -83,7 +83,9 @@ rm -rf device/phh/treble/charger/
 
 . build/envsetup.sh
 echo PWD is $PWD
-buildTrebleApp
+if buildTrebleApp;then
+	echo "SUCCESS WOOOOO"
+fi
 generateMakefiles
 
 # export TARGET_RELEASE=ap2a
