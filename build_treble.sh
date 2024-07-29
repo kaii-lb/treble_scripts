@@ -78,7 +78,7 @@ generateMakefiles
 # screw this command sideways
 # make clobber
 echo -e "--> running lunch..."
-lunch everest_arm64_bgN-userdebug
+lunch everest_arm64_bvN-userdebug
 echo -e "--> done eating."
 # make systemimage -j $(nproc --all)
 make systemimage -j$(nproc --all)
@@ -89,5 +89,5 @@ if [ $? != 0 ]; then
 fi
 
 cd /tmp/src/android/out/target/product/tdgsi_arm64_ab/
-tar -c -I 'xz -9 -T0' -f EverestOS_1_3_arm64_bgN.tar.xz system.img
+tar -c -I 'xz -9 -T0' -f EverestOS_1_3_arm64_bvN.tar.xz system.img
 cd /tmp/src/android/
