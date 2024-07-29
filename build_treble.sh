@@ -92,6 +92,9 @@ generateMakefiles
 
 # export TARGET_RELEASE=ap2a
 
+mka target-files-package otatools; \
+/opt/crave/crave_sign.sh
+
 # screw this command sideways
 # make clobber
 echo -e "--> running lunch..."
