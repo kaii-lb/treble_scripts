@@ -89,5 +89,5 @@ if [ $? != 0 ]; then
 fi
 
 cd /tmp/src/android/out/target/product/tdgsi_arm64_ab/
-tar -c -I 'xz -9 -T0' -f EverestOS_1_3_arm64_bvN.tar.xz system.img
+tar -c -I 'xz -9 -T0' -f EverestOS_1_3_arm64_bvN-NO_GAPPS.tar.xz system.img
 cd /tmp/src/android/
