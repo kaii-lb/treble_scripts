@@ -5,24 +5,6 @@
 # git am --abort
 # git am --skip
 
-# thanks ponces
-buildTrebleApp() {
-    echo "--> Building treble_app"
-    cd treble_app
-
-	# causes issues, exits entire script on success/failure
-    # if bash build.sh release; then
-    # 	echo "--> SUCCESSFULLY BUILT TREBLE APP"
-    # else 
-    # 	echo "--> BUILDING TREBLE APP FAILED"
-    # fi
-    
-    cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
-    cd ../
-    echo "--> Finished building treble_app $PWD"
-    echo
-}
-
 generateMakefiles() {
 	cd device/phh/treble
 	git clean -fdx
@@ -83,7 +65,8 @@ rm -rf device/phh/treble/charger/
 
 . build/envsetup.sh
 echo PWD is $PWD
-if buildTrebleApp;then
+curl -sf https://raw.githubusercontent.com/kaii-lb/treble_scripts/main/treble_app.sh > treble_app.sh 
+if sh treble_app.sh;then
 	echo "SUCCESS WOOOOO"
 else
 	echo "NOT SUCCESS DAMNIT"
@@ -91,9 +74,6 @@ fi
 generateMakefiles
 
 # export TARGET_RELEASE=ap2a
-
-mka target-files-package otatools; \
-/opt/crave/crave_sign.sh
 
 # screw this command sideways
 # make clobber
