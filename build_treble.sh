@@ -81,7 +81,7 @@ generateMakefiles
 # screw this command sideways
 # make clobber
 echo -e "--> running lunch..."
-lunch everest_arm64_bvN-userdebug
+lunch everest_arm64_bgN-userdebug
 echo -e "--> done eating."
 # make systemimage -j $(nproc --all)
 make systemimage -j$(nproc --all)
