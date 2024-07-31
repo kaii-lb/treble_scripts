@@ -92,6 +92,6 @@ if [ $? != 0 ]; then
 fi
 
 cd /tmp/src/android/out/target/product/tdgsi_arm64_ab/
-xz -9 -T0 system.img
+xz -9 -T0 -k system.img
 mv system.img.xz EverestOS_1_3_arm64_bgN-FULL_GAPPS.xz
 cd /tmp/src/android/
