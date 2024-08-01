@@ -37,21 +37,42 @@ resetAllPatches() {
 
 copySEPolicyFiles() {
 	echo
-	echo "Copying SEPolicy files"	
+	echo "--> Cleaning old SEPolicy files"	
+
+	pushd /tmp/src/android/device/everest/sepolicy/common/public &>/dev/null
+	git clean -fdx	
+	popd &>/dev/null	
+
+	pushd /tmp/src/android/device/everest/sepolicy/common/vendor &>/dev/null
+	git clean -fdx	
+	popd &>/dev/null	
+
+	pushd /tmp/src/android/device/phh/treble/sepolicy &>/dev/null
+	git clean -fdx	
+	popd &>/dev/null	
+
+	echo
+	echo "--> Copying new SEPolicy files"
+	echo
 
 	for folder in $(cd treblestuff/sepolicy; echo *); do
-		neededDir="/tmp/src/android/device/everest/sepolicy/common/$folder"
+		if [[ $folder == "phh" ]];then
+			neededDir="/tmp/src/android/device/phh/treble/sepolicy/"
+			echoThis="device/phh/treble/sepolicy"
+		else 
+			neededDir="/tmp/src/android/device/everest/sepolicy/common/$folder"
+			echoThis="device/everest/sepolicy/common/$folder"
+		fi
 
-		pushd $neededDir &>/dev/null
-		git clean -fdx	
-		popd &>/dev/null	
-	
 		for policy in $(cd treblestuff/sepolicy/$folder; echo *); do
-			cp treblestuff/sepolicy/$folder/$policy $neededDir
+			cp treblestuff/sepolicy/$folder/$policy $neededDir 1>/dev/null
+
+			echo "Copied $policy to $echoThis"
 		done
 	done
 
-	echo "Done copying SEPolicy files"
+	echo
+	echo "--> Done copying SEPolicy files"
 	echo
 }
 
