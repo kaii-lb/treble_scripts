@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # screw this command sideways
 echo -e "--> running lunch..."

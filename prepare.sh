@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # absolute mish mash of stuff
 
@@ -37,11 +37,15 @@ resetAllPatches() {
 
 copySEPolicyFiles() {
 	echo
-	echo "Copying SEPolicy files"
-		
+	echo "Copying SEPolicy files"	
+
 	for folder in $(cd treblestuff/sepolicy; echo *); do
 		neededDir="/tmp/src/android/device/everest/sepolicy/common/$folder"
 
+		pushd $neededDir &>/dev/null
+		git clean -fdx	
+		popd &>/dev/null	
+	
 		for policy in $(cd treblestuff/sepolicy/$folder; echo *); do
 			cp treblestuff/sepolicy/$folder/$policy $neededDir
 		done
