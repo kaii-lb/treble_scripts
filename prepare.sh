@@ -35,6 +35,22 @@ resetAllPatches() {
 	treblestuff/patches/apply.sh . trebledroid --reset
 }
 
+copySEPolicyFiles() {
+	echo
+	echo "Copying SEPolicy files"
+		
+	for folder in $(cd treblestuff/sepolicy; echo *); do
+		neededDir="/tmp/src/android/device/everest/sepolicy/common/$folder"
+
+		for policy in $(cd treblestuff/sepolicy/$folder; echo *); do
+			cp treblestuff/sepolicy/$folder/$policy $neededDir
+		done
+	done
+
+	echo "Done copying SEPolicy files"
+	echo
+}
+
 rm -rf .repo/local_manifests
 rm -rf treblestuff/
 mkdir -p .repo/local_manifests
@@ -77,3 +93,4 @@ echo PWD is $PWD
 # fi
 
 generateMakefiles
+copySEPolicyFiles
