@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. build/envsetup.sh
+
 # screw this command sideways
 echo -e "--> running lunch..."
 lunch everest_arm64_bgN-userdebug
