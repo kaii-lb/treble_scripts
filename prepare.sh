@@ -117,5 +117,5 @@ echo PWD is $PWD
 # 	echo "NOT SUCCESS DAMNIT"
 # fi
 
-generateMakefiles
 copySEPolicyFiles
+generateMakefiles
