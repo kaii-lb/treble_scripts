@@ -47,9 +47,9 @@ copySEPolicyFiles() {
 	git clean -fdx	
 	popd &>/dev/null	
 
-	pushd /tmp/src/android/device/phh/treble/sepolicy &>/dev/null
-	git clean -fdx	
-	popd &>/dev/null	
+	# pushd /tmp/src/android/device/phh/treble/sepolicy &>/dev/null
+	# git clean -fdx	
+	# popd &>/dev/null	
 
 	echo
 	echo "--> Copying new SEPolicy files"
@@ -117,5 +117,5 @@ echo PWD is $PWD
 # 	echo "NOT SUCCESS DAMNIT"
 # fi
 
-copySEPolicyFiles
 generateMakefiles
+copySEPolicyFiles
