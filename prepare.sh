@@ -108,7 +108,6 @@ rm -rf device/phh/treble/charger/
 
 # export TARGET_RELEASE=ap2a
 
-. build/envsetup.sh
 echo PWD is $PWD
 # curl -sf https://raw.githubusercontent.com/kaii-lb/treble_scripts/main/treble_app.sh > treble_app.sh 
 # if sh treble_app.sh;then
