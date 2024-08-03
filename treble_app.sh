@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 echo "--> Building treble_app"
 pushd treble_app || exit
 	# causes issues, exits entire script on success/failure
