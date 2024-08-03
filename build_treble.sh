@@ -72,13 +72,13 @@ copySEPolicyFiles() {
 	echo
 }
 
-rm -rf .repo/local_manifests
+rm -rf .repo/local_manifests && echo "Removed Local Manifests"
 rm -rf treblestuff/
 mkdir -p .repo/local_manifests
 
 repo init -u https://github.com/ProjectEverest/manifest -b qpr3 --git-lfs
 
-git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests
+git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo "Added Personal Local Manifest"
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
 
 ls treblestuff/ 1>/dev/null
