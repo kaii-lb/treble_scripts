@@ -51,7 +51,7 @@ copySEPolicyFiles() {
 	echo "--> Copying new SEPolicy files"
 	echo
 
-	for folder in $(cd treblestuff/sepolicy; echo *); do
+	for folder in $(cd treblestuff/sepolicy && echo *); do
 		if [[ $folder == "phh" ]];then
 			neededDir="/tmp/src/android/device/phh/treble/sepolicy/"
 			echoThis="device/phh/treble/sepolicy"

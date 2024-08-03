@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "--> Building treble_app"
-pushd treble_app || exit
+cd /tmp/src/android/treble_app
 	# causes issues, exits entire script on success/failure
 	if bash build.sh release; then
 		echo "--> SUCCESSFULLY BUILT TREBLE APP"
@@ -9,4 +9,4 @@ pushd treble_app || exit
 		echo "--> BUILDING TREBLE APP FAILED"
 	fi
 	cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
-popd || exit
+cd /tmp/src/android
