@@ -95,7 +95,7 @@ echo -e "--> Starting resync at $(date)."
 echo -e "--> Resync done at $(date)."
 
 treblestuff/patches/apply.sh . personal
-treblestuff/patches/apply.sh . debug
+# treblestuff/patches/apply.sh . debug
 treblestuff/patches/apply.sh . pickedout
 treblestuff/patches/apply.sh . trebledroid
 
