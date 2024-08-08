@@ -7,9 +7,6 @@ generateMakefiles() {
 	git clean -fdx
 	cp ../../../treblestuff/everest.mk .
 	cp ../../../treblestuff/everest_product_filenames.mk .
-	cp ../../../treblestuff/everest_arm64_bgN.mk .
-	cp ../../../treblestuff/everest_arm64_bvN.mk .
-
 	
 	echo "--> Generating makefiles"
 	bash generate.sh everest
@@ -19,6 +16,9 @@ generateMakefiles() {
 
 	sed -i '${/^[[:space:]]*$/d;}' AndroidProducts.mk
 	cat everest_product_filenames.mk >> AndroidProducts.mk
+
+	cp ../../../treblestuff/everest_arm64_bgN.mk .
+	cp ../../../treblestuff/everest_arm64_bvN.mk .
 	
 	cd ../../../ 
 	echo "--> Done generating makefiles"
