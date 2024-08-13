@@ -3,7 +3,7 @@
 . build/envsetup.sh
 # screw this command sideways
 echo -e "--> Running lunch..."
-lunch everest_arm64_bvN-userdebug
+lunch everest_arm64_bgN-userdebug
 echo -e "--> Done eating."
 
 make systemimage -j$(nproc --all)
@@ -15,6 +15,6 @@ fi
 
 pushd /tmp/src/android/out/target/product/tdgsi_arm64_ab/
 xz -9 -T0 -k system.img
-#mv system.img.xz EverestOS_1_3_arm64_bgN-FULL_GAPPS.img.xz
-mv system.img.xz EverestOS_1_3_arm64_bvN-NO_GAPPS.img.xz
+mv system.img.xz EverestOS_1_3_arm64_bgN-FULL_GAPPS.img.xz
+#mv system.img.xz EverestOS_1_3_arm64_bvN-NO_GAPPS.img.xz
 popd
