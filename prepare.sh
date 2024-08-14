@@ -102,6 +102,12 @@ treblestuff/patches/apply.sh . trebledroid
 # remove conflicted charger between phh_device and everest os, should find a better way
 rm -rf device/phh/treble/charger/
 
+# thank you to evolution-xyz for this temporary pif apk
+pushd /tmp/src/android/vendor/certification/PifPrebuilt
+rm PifPrebuilt.apk*
+wget https://github.com/Evolution-X/vendor_certification/raw/udc/PifPrebuilt/PifPrebuilt.apk
+popd
+
 # export TARGET_RELEASE=ap2a
 
 echo PWD is $PWD
