@@ -19,6 +19,7 @@ generateMakefiles() {
 
 	cp ../../../treblestuff/everest_arm64_bgN.mk .
 	cp ../../../treblestuff/everest_arm64_bvN.mk .
+	cp ../../../treblestuff/everest_arm64_bvPN.mk .
 	
 	cd ../../../ 
 	echo "--> Done generating makefiles"
@@ -26,7 +27,6 @@ generateMakefiles() {
 
 resetAllPatches() {
 	treblestuff/patches/apply.sh . personal --reset
-	treblestuff/patches/apply.sh . debug --reset
 	treblestuff/patches/apply.sh . pickedout --reset
 	treblestuff/patches/apply.sh . trebledroid --reset
 }
@@ -42,10 +42,6 @@ copySEPolicyFiles() {
 	pushd /tmp/src/android/device/everest/sepolicy/common/vendor &>/dev/null
 	git clean -fdx	
 	popd &>/dev/null	
-
-	# pushd /tmp/src/android/device/phh/treble/sepolicy &>/dev/null
-	# git clean -fdx	
-	# popd &>/dev/null	
 
 	echo
 	echo "--> Copying new SEPolicy files"
@@ -79,7 +75,7 @@ mkdir -p .repo/local_manifests
 repo init -u https://github.com/ProjectEverest/manifest -b qpr3 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo "Added Personal Local Manifest"
-git clone https://github.com/kaii-lb/treble_everest.git treblestuff/
+git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo "Added necessary treble patches and sepolicies"
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
@@ -90,7 +86,6 @@ fi
 resetAllPatches
 
 echo -e "--> Starting resync at $(date)."
-# curl -sf https://raw.githubusercontent.com/xc112lg/scripts/cd10/b.sh | bash;
 /opt/crave/resync.sh
 echo -e "--> Resync done at $(date)."
 
@@ -102,22 +97,15 @@ treblestuff/patches/apply.sh . trebledroid
 # remove conflicted charger between phh_device and everest os, should find a better way
 rm -rf device/phh/treble/charger/
 
-# thank you to evolution-xyz for this temporary pif apk
-pushd /tmp/src/android/vendor/certification/PifPrebuilt
-rm PifPrebuilt.apk*
-wget https://github.com/Evolution-X/vendor_certification/raw/udc/PifPrebuilt/PifPrebuilt.apk
-popd
+# thank you to evolution-xyz for this temporary pif apk || removed for now since PIF was updated.
+# pushd /tmp/src/android/vendor/certification/PifPrebuilt
+# rm PifPrebuilt.apk*
+# wget https://github.com/Evolution-X/vendor_certification/raw/udc/PifPrebuilt/PifPrebuilt.apk
+# popd
 
 # export TARGET_RELEASE=ap2a
 
 echo PWD is $PWD
-# curl -sf https://raw.githubusercontent.com/kaii-lb/treble_scripts/main/treble_app.sh > treble_app.sh 
-# if bash treble_app.sh;then
-# 	echo "SUCCESS WOOOOO"
-# else
-# 	echo "NOT SUCCESS DAMNIT"
-# fi
 
 generateMakefiles
 copySEPolicyFiles
-
