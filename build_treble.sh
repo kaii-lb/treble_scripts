@@ -28,6 +28,7 @@ echo -e "--> Running lunch..."
 lunch everest_arm64_$type-$suffix
 echo -e "--> Done eating."
 
+# make PifPrebuilt # read up on how to do this correctly
 make systemimage -j$(nproc --all)
 
 if [ $? != 0 ]; then

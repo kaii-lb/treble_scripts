@@ -70,12 +70,14 @@ copySEPolicyFiles() {
 
 rm -rf .repo/local_manifests && echo "Removed Local Manifests"
 rm -rf treblestuff/
+rm -rf vendor/everest/signing/keys
 mkdir -p .repo/local_manifests
 
 repo init -u https://github.com/ProjectEverest/manifest -b qpr3 --git-lfs
 
-git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo "Added Personal Local Manifest"
-git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo "Added necessary treble patches and sepolicies"
+git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo && echo "Added personal local manifest"
+git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo && echo "Added necessary treble patches and sepolicies"
+git clone https://github.com/kaii-lb/everestos_keys.git vendor/everest/signing/keys && echo && echo "Added personal signing keys"
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
@@ -106,6 +108,9 @@ rm -rf device/phh/treble/charger/
 # export TARGET_RELEASE=ap2a
 
 echo PWD is $PWD
+
+# copy keys for signing
+
 
 generateMakefiles
 copySEPolicyFiles
