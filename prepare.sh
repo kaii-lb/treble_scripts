@@ -73,7 +73,7 @@ rm -rf treblestuff/
 rm -rf vendor/everest/signing/keys
 mkdir -p .repo/local_manifests
 
-repo init -u https://github.com/ProjectEverest/manifest -b qpr3 --git-lfs
+repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo && echo "Added personal local manifest"
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo && echo "Added necessary treble patches and sepolicies"
