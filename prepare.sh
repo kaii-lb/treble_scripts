@@ -78,7 +78,6 @@ repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo && echo "Added personal local manifest"
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo && echo "Added necessary treble patches and sepolicies"
 git clone https://github.com/kaii-lb/everestos_keys.git vendor/lineage/signing/keys && echo && echo "Added personal signing keys"
-git clone https://github.com/kaii-lb/everestos_keys.git vendor/everest/signing/keys && echo && echo "Added personal signing keys"
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
@@ -97,7 +96,8 @@ treblestuff/patches/apply.sh . personal
 treblestuff/patches/apply.sh . pickedout
 treblestuff/patches/apply.sh . trebledroid
 
-# remove conflicted charger between phh_device and everest os, should find a better way
+# remove conflicted charger between phh_device and everest os
+# recommended way is with a commit revert, but oh well
 rm -rf device/phh/treble/charger/
 
 # thank you to evolution-xyz for this temporary pif apk || removed for now since PIF was updated.
