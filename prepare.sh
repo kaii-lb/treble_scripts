@@ -25,6 +25,7 @@ generateMakefiles() {
 }
 
 resetAllPatches() {
+# 	treblestuff/patches/apply.sh . debug --reset
 	treblestuff/patches/apply.sh . personal --reset
 	treblestuff/patches/apply.sh . pickedout --reset
 	treblestuff/patches/apply.sh . trebledroid --reset
@@ -69,14 +70,14 @@ copySEPolicyFiles() {
 
 rm -rf .repo/local_manifests && echo "Removed Local Manifests"
 rm -rf treblestuff/
-rm -rf vendor/everest/signing/keys
+rm -rf vendor/lineage/signing/keys
 mkdir -p .repo/local_manifests
 
 repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo && echo "Added personal local manifest"
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo && echo "Added necessary treble patches and sepolicies"
-git clone https://github.com/kaii-lb/everestos_keys.git vendor/everest/signing/keys && echo && echo "Added personal signing keys"
+git clone https://github.com/kaii-lb/everestos_keys.git vendor/lineage/signing/keys && echo && echo "Added personal signing keys"
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
@@ -107,9 +108,6 @@ rm -rf device/phh/treble/charger/
 # export TARGET_RELEASE=ap2a
 
 echo PWD is $PWD
-
-# copy keys for signing
-
 
 generateMakefiles
 copySEPolicyFiles
