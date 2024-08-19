@@ -5,21 +5,20 @@
 generateMakefiles() {
 	cd device/phh/treble
 	git clean -fdx
-	cp ../../../treblestuff/everest.mk .
-	cp ../../../treblestuff/everest_product_filenames.mk .
+	cp ../../../treblestuff/lineage.mk .
+	cp ../../../treblestuff/lineage_product_filenames.mk .
 	
 	echo "--> Generating makefiles"
-	bash generate.sh everest
+	bash generate.sh lineage
 	
 	echo "--> Copying and renaming makefiles"
-	for f in treble_*.mk; do cp -v "$f" "${f/treble/everest}"; done;
+	for f in treble_*.mk; do cp -v "$f" "${f/treble/lineage}"; done;
 
 	sed -i '${/^[[:space:]]*$/d;}' AndroidProducts.mk
-	cat everest_product_filenames.mk >> AndroidProducts.mk
+	cat lineage_product_filenames.mk >> AndroidProducts.mk
 
-	cp ../../../treblestuff/everest_arm64_bgN.mk .
-	cp ../../../treblestuff/everest_arm64_bvN.mk .
-	cp ../../../treblestuff/everest_arm64_bvPN.mk .
+	cp ../../../treblestuff/lineage_arm64_bgN.mk .
+	cp ../../../treblestuff/lineage_arm64_bvN.mk .
 	
 	cd ../../../ 
 	echo "--> Done generating makefiles"
@@ -35,11 +34,11 @@ copySEPolicyFiles() {
 	echo
 	echo "--> Cleaning old SEPolicy files"	
 
-	pushd /tmp/src/android/device/everest/sepolicy/common/public &>/dev/null
+	pushd /tmp/src/android/device/lineage/sepolicy/common/public &>/dev/null
 	git clean -fdx	
 	popd &>/dev/null	
 
-	pushd /tmp/src/android/device/everest/sepolicy/common/vendor &>/dev/null
+	pushd /tmp/src/android/device/lineage/sepolicy/common/vendor &>/dev/null
 	git clean -fdx	
 	popd &>/dev/null	
 
@@ -52,8 +51,8 @@ copySEPolicyFiles() {
 			neededDir="/tmp/src/android/device/phh/treble/sepolicy/"
 			echoThis="device/phh/treble/sepolicy"
 		else 
-			neededDir="/tmp/src/android/device/everest/sepolicy/common/$folder"
-			echoThis="device/everest/sepolicy/common/$folder"
+			neededDir="/tmp/src/android/device/lineage/sepolicy/common/$folder"
+			echoThis="device/lineage/sepolicy/common/$folder"
 		fi
 
 		for policy in $(cd treblestuff/sepolicy/$folder; echo *); do

@@ -11,9 +11,6 @@ if [[ $build == "gapps" ]]; then
 elif [[ $build == "vanilla" ]]; then
 	type="bvN"
 	name="NO_GAPPS"
-elif [[ $build == "pixel" ]]; then
-	type="bgPN"
-	name="FULL_GAPPS_REB"
 fi
 
 if [[ $2 == "user" ]]; then
@@ -25,7 +22,7 @@ fi
 . build/envsetup.sh
 # screw this command sideways
 echo -e "--> Running lunch..."
-lunch everest_arm64_$type-$suffix
+lunch lineage_arm64_$type-$suffix
 echo -e "--> Done eating."
 
 # make PifPrebuilt # read up on how to do this correctly
