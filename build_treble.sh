@@ -22,7 +22,7 @@ fi
 . build/envsetup.sh
 # screw this command sideways
 echo -e "--> Running lunch..."
-lunch lineage_arm64_$type-ap2a-$suffix
+lunch lineage_arm64_$type-$suffix
 echo -e "--> Done eating."
 
 # make PifPrebuilt # read up on how to do this correctly
