@@ -71,6 +71,7 @@ copySEPolicyFiles() {
 rm -rf .repo/local_manifests && echo "Removed Local Manifests"
 rm -rf treblestuff/
 rm -rf vendor/lineage/signing/keys
+rm -r prebuilts/clang/host/linux-x86
 mkdir -p .repo/local_manifests
 
 repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
@@ -78,6 +79,7 @@ repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo && echo "Added personal local manifest"
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo && echo "Added necessary treble patches and sepolicies"
 git clone https://github.com/kaii-lb/everestos_keys.git vendor/lineage/signing/keys && echo && echo "Added personal signing keys"
+git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 && echo "Added AOSP clang"
 
 ls treblestuff/ 1>/dev/null
 if [ $? != 0 ]; then
