@@ -79,6 +79,9 @@ repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo && echo "Added personal local manifest"
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo && echo "Added necessary treble patches and sepolicies"
 git clone https://github.com/kaii-lb/everestos_keys.git vendor/lineage/signing/keys && echo && echo "Added personal signing keys"
+
+# not entirely sure why this worked but could be cuz it force resync the clang repo 
+# causing it to start working...? cuz this dir got deleted by crave's resync script
 git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 && echo "Added AOSP clang"
 
 ls treblestuff/ 1>/dev/null
@@ -101,6 +104,12 @@ treblestuff/patches/apply.sh . trebledroid
 # remove conflicted charger between phh_device and everest os
 # recommended way is with a commit revert, but oh well
 rm -rf device/phh/treble/charger/
+
+# copy tdgsi_arm64_ab to arm64_bgN/bvN to find device correctly(?)
+pushd /tmp/src/android/device/phh/treble
+cp -r tdgsi_arm64_ab arm64_bgN
+cp -r tdgsi_arm64_ab arm64_bvN
+popd
 
 # thank you to evolution-xyz for this temporary pif apk || removed for now since PIF was updated.
 # pushd /tmp/src/android/vendor/certification/PifPrebuilt
