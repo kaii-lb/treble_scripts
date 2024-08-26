@@ -33,7 +33,7 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
-pushd /tmp/src/android/out/target/product/tdgsi_arm64_ab/
+pushd /tmp/src/android/out/target/product/arm64_$type/
 xz -9 -T0 -k system.img
 mv system.img.xz EverestOS_1_3_arm64_$type-$name.img.xz
 popd
