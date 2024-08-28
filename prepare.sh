@@ -48,7 +48,6 @@ copySEPolicyFiles() {
 
 rm -rf .repo/local_manifests && echo "Removed Local Manifests"
 rm -rf treblestuff/
-# rm -r prebuilts/clang/host/linux-x86
 mkdir -p .repo/local_manifests
 
 repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
@@ -66,6 +65,9 @@ resetAllPatches
 echo -e "--> Starting resync at $(date)."
 /opt/crave/resync.sh
 echo -e "--> Resync done at $(date)."
+
+rm -r prebuilts/clang/host/linux-x86
+git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 rm -rf vendor/lineage/signing/keys
 git clone https://github.com/kaii-lb/everestos_keys.git vendor/lineage/signing/keys && echo && echo "Added personal signing keys"
