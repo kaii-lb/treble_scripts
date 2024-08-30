@@ -79,4 +79,4 @@ treblestuff/patches/apply.sh . trebledroid
 
 echo PWD is $PWD
 
-copySEPolicyFiles
+# copySEPolicyFiles
