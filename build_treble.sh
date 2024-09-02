@@ -26,7 +26,7 @@ lunch lineage_arm64_$type-$suffix
 echo -e "--> Done eating."
 
 # make PifPrebuilt # read up on how to do this correctly
-make systemimage -j$(nproc --all)
+mka systemimage -j$(nproc --all)
 
 if [ $? != 0 ]; then
   echo "--> ERROR: building treble_everest failed."
