@@ -66,7 +66,7 @@ echo -e "--> Starting resync at $(date)."
 /opt/crave/resync.sh
 echo -e "--> Resync done at $(date)."
 
-# rm -r prebuilts/clang/host/linux-x86
+# rm -rf prebuilts/clang/host/linux-x86
 # git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 rm -rf vendor/lineage/signing/keys
