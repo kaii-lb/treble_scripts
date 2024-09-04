@@ -19,13 +19,12 @@ else
 	suffix="userdebug"
 fi
 
-. build/envsetup.sh
-# screw this command sideways
-
+export TARGET_RELEASE=ap2a
+source build/envsetup.sh
 export TARGET_RELEASE=ap2a
 
+# screw this command sideways
 echo -e "--> Running lunch..."
-# lunch lineage_arm64_$type-$suffix
 lunch lineage_arm64_$type-$suffix
 echo -e "--> Done eating."
 
