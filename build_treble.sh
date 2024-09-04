@@ -19,6 +19,8 @@ else
 	suffix="userdebug"
 fi
 
+echo "--> BUILD TYPE $type $suffix $name"
+
 export TARGET_RELEASE=ap2a
 source build/envsetup.sh
 export TARGET_RELEASE=ap2a
