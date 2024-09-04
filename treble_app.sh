@@ -5,6 +5,7 @@ cd /tmp/src/android/treble_app
 	# causes issues, exits entire script on success/failure
 	# can't exit script if not in script ;D
 	# bash build.sh release
+	rm TrebleApp.apk
 	wget https://raw.githubusercontent.com/kaii-lb/treble_everest/14/TrebleApp.apk
 
 	if [ $? != 0 ]; then
