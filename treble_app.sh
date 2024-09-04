@@ -14,5 +14,5 @@ cd /tmp/src/android/treble_app
 		echo "using own TrebleApp.apk"
 	fi
 	
-	cp TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk
+	cp -v TrebleApp.apk ../vendor/hardware_overlay/TrebleApp/app.apk && echo "Copied TrebleApp.apk"
 cd /tmp/src/android
