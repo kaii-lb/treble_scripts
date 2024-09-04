@@ -38,5 +38,5 @@ fi
 
 pushd /tmp/src/android/out/target/product/arm64_$type/
 xz -9 -T0 -k system.img
-mv system.img.xz EverestOS_1_3_arm64_$type-$name.img.xz
+mv system.img.xz EverestOS_1_5_arm64_$type-$name.img.xz
 popd
