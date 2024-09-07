@@ -50,7 +50,7 @@ rm -rf .repo/local_manifests && echo "Removed Local Manifests"
 rm -rf treblestuff/
 mkdir -p .repo/local_manifests
 
-repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs
+repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs --depth=1
 
 git clone https://github.com/kaii-lb/treble_manifest.git .repo/local_manifests && echo && echo "Added personal local manifest"
 git clone https://github.com/kaii-lb/treble_everest.git treblestuff/ && echo && echo "Added necessary treble patches and sepolicies"
@@ -66,9 +66,12 @@ echo -e "--> Starting resync at $(date)."
 /opt/crave/resync.sh
 echo -e "--> Resync done at $(date)."
 
-# signing no longer needed cuz pif passes without it now
-# rm -rf vendor/lineage/signing/keys
-# git clone https://github.com/kaii-lb/everestos_keys.git vendor/lineage/signing/keys && echo && echo "Added personal signing keys"
+rm -rf prebuilts/clang/host/linux-x86
+git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 --depth=1
+
+# signing no longer needed cuz pif passes without it now but still
+rm -rf vendor/lineage/signing/keys
+git clone https://github.com/kaii-lb/everestos_keys.git vendor/lineage/signing/keys && echo && echo "Added personal signing keys"
 
 treblestuff/patches/apply.sh . personal
 # treblestuff/patches/apply.sh . debug
