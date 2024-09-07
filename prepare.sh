@@ -66,8 +66,8 @@ echo -e "--> Starting resync at $(date)."
 /opt/crave/resync.sh
 echo -e "--> Resync done at $(date)."
 
-rm -rf prebuilts/clang/host/linux-x86
-git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 --depth=1
+# rm -rf prebuilts/clang/host/linux-x86
+# it clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 --depth=1
 
 # signing no longer needed cuz pif passes without it now but still
 rm -rf vendor/lineage/signing/keys
